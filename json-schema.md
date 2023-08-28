@@ -115,6 +115,7 @@ Ambas as representações são igualmente válidas, embora uma seja claramente m
       "type": "object",
       "properties": {
         "endereco_rua": { "type": "string" },
+        "numero": {"type": "number"},
         "cidade": { "type": "string" },
         "estado": { "type": "string" },
         "pais": { "type" : "string" }
