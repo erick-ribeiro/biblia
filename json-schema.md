@@ -1,3 +1,39 @@
+# Como utilizar a validação de esquema JSON para melhorar o design e a documentação da sua API?
+
+A validação de esquema JSON é uma ferramenta poderosa para desenvolvedores que desejam criar e consumir APIs com estruturas de dados claras e consistentes. Ela pode ajudar a definir, documentar e validar modelos de dados. Neste artigo, você aprenderá como usar a validação de esquema JSON para melhorar o design e a documentação da sua API.
+
+## Por que usar a validação de esquema JSON?
+
+A validação de esquema JSON pode oferecer várias vantagens para o desenvolvimento e consumo de API. Ela pode melhorar a qualidade e consistência dos dados ao impor regras e restrições na entrada e saída. Além disso, pode simplificar a documentação e comunicação de modelos de dados fornecendo uma única fonte da verdade para o esquema da API. Além disso, pode acelerar o processo de desenvolvimento e teste, permitindo a geração de código e dados fictícios a partir do esquema, bem como a validação programática dos dados. Finalmente, pode melhorar a experiência do usuário e o tratamento de erros ao fornecer feedback significativo e acionável para dados inválidos.
+
+Documentar estruturas como essa pode ser incrivelmente útil porque democratiza o desenvolvimento de clientes de API. Qualquer API pode ser a primeira de um desenvolvedor, por isso é importante tornar os requisitos claros e detalhados. Mesmo para desenvolvedores experientes, uma documentação completa cria eficiências e acelera o desenvolvimento. Todas essas ações podem, em última análise, levar a uma adoção mais ampla da sua API e produto.
+
+As duas últimas frases parecem muito genéricas. Seria mais útil dizer como a validação pode ocorrer ou explicar o tratamento de erros com um exemplo.
+
+## Como criar um esquema JSON
+
+Criar um esquema JSON para sua API pode ser facilitado com a ajuda de várias ferramentas e recursos. Por exemplo, o JSON Schema Generator é uma ferramenta online que permite criar um esquema JSON a partir de uma amostra de dados JSON ou de um rascunho de esquema JSON. O JSON Schema Editor é outra ferramenta online que permite editar e visualizar um esquema JSON em um modo gráfico ou de texto. Ele também ajuda a validar seus dados contra seu esquema. JSON Schema Lint é uma ferramenta online que permite validar seu esquema JSON e dados. Ele verifica a compatibilidade, além das melhores práticas. Por último, o JSON Schema Faker é uma ferramenta online que permite gerar dados fictícios a partir do seu esquema JSON, bem como exportar seus dados para vários formatos.
+
+Embora as ferramentas online possam ser convenientes, elas nem sempre são a opção mais segura.
+
+Ao usar esses serviços, você está confiando que o provedor da ferramenta protegerá seus dados. Embora eu acredite que eles levam a segurança a sério, sempre há um risco de seus dados serem comprometidos. Para alguns casos de uso, pode ser mais seguro confiar em uma ferramenta offline (por exemplo, GenSON, uma biblioteca Python que pode ser usada para gerar Esquemas JSON, que também possui uma ferramenta CLI).
+
+Ao optar por usar algo que funciona online, é crucial sempre verificar os dados que você está alimentando na ferramenta e garantir que não esteja colando informações ou dados sensíveis que não deseja compartilhar ou armazenar.
+
+## Como usar a validação de esquema JSON
+
+Usar a validação de esquema JSON para sua API pode ser benéfico dependendo das suas necessidades e preferências. Por exemplo, você pode usá-lo como um middleware para seu servidor de API para validar dados de requisição e resposta. Também pode enviar mensagens de erro apropriadas e códigos de status. Existem várias bibliotecas e frameworks que suportam isso, como Express, Fastify, Hapi e Restify. Além disso, você pode usá-lo como uma biblioteca do lado do cliente para seu consumidor de API para validar dados enviados e recebidos da sua API, bem como tratar erros e exceções com elegância. Existem várias bibliotecas e frameworks que suportam isso, como Ajv, JSON Schema Validator e tv4. Por último, você pode usá-lo como um gerador de código para sua API para gerar código do lado do cliente e do servidor a partir do seu esquema JSON. Também pode ser usado para dados fictícios e testes. Existem várias ferramentas e plataformas que suportam isso, como OpenAPI Generator, JSON Schema to TypeScript e Postman.
+
+Além disso, o esquema JSON pode ser usado para simplificar a reformulação de dados de formatos que são específicos para sua aplicação em formatos que a API (que o esquema JSON descreve) consome.
+
+Vai desde tipos que podem ser gerados em TypeScript para o JSON em questão e ver sugestões de preenchimento automático no seu editor de código ou IDE até o uso de ChatGPT, GitHub Copilot ou LLMs similares para escrever automaticamente conversores de dados. O que não seria tão possível sem ter um esquema JSON.
+
+Em uma Arquitetura Orientada a Eventos, usamos o esquema JSON como APIs para garantir que os dados compartilhados em nosso sistema distribuído aderem ao contrato, mantendo os dados legíveis por humanos.
+
+### Como documentar seu esquema JSON
+
+Documentar seu esquema JSON é uma etapa importante para tornar sua API fácil de entender e usar. Existem vários métodos para documentar seu esquema JSON, como usar anotações e palavras-chave de esquema JSON para adicionar descrições, exemplos, títulos e outros metadados, bem como definir regras de validação personalizadas e mensagens de erro. Além disso, você pode usar geradores de documentação de esquema JSON para criar documentação legível e interativa, ou padrões de documentação de esquema JSON para seguir melhores práticas e convenções. Existem várias ferramentas e plataformas que suportam esses métodos, como JSON Schema Docs, Docson, Redoc, OpenAPI Specification, JSON Hyper-Schema e JSON API.
+
 # Json Schema
 O JSON Schema é uma linguagem declarativa que permite anotar e validar documentos JSON.
 O JSON Schema possibilita o uso confiante e confiável do formato de dados JSON.
