@@ -1,244 +1,276 @@
-# Como utilizar a validação de esquema JSON para melhorar o design e a documentação da sua API?
+# Garantindo a Qualidade de APIs com Validação de JSON Schema
 
-A validação de esquema JSON é uma ferramenta poderosa para desenvolvedores que desejam criar e consumir APIs com estruturas de dados claras e consistentes. Ela pode ajudar a definir, documentar e validar modelos de dados. Neste artigo, você aprenderá como usar a validação de esquema JSON para melhorar o design e a documentação da sua API.
+No mundo digital de hoje, a capacidade de compreender e manipular dados é essencial. Isso se torna ainda mais relevante em um cenário onde temos várias aplicações se comunicando uma com a outra. O JSON, ou Javascript Object Notation, surgiu como um "padrão" para esta comunicação, facilitando a troca de dados entre diferentes plataformas e linguagens. 
 
-## Por que usar a validação de esquema JSON?
+Entender sua estrutura e nuances não é apenas uma habilidade técnica, mas uma necessidade para garantir a fluidez e a eficiência da troca de informações. Neste artigo, vamos explorar o JSON Schema, um aliado essencial que nos ajuda a assegurar que os dados transmitidos mantenham sua integridade e conformidade.
 
-A validação de esquema JSON pode oferecer várias vantagens para o desenvolvimento e consumo de API. Ela pode melhorar a qualidade e consistência dos dados ao impor regras e restrições na entrada e saída. Além disso, pode simplificar a documentação e comunicação de modelos de dados fornecendo uma única fonte da verdade para o esquema da API. Além disso, pode acelerar o processo de desenvolvimento e teste, permitindo a geração de código e dados fictícios a partir do esquema, bem como a validação programática dos dados. Finalmente, pode melhorar a experiência do usuário e o tratamento de erros ao fornecer feedback significativo e acionável para dados inválidos.
+> Na próxima seção vamos abordar a estrutura de um JSON, então, se você já tem conhecimentos sobre o que é JSON e como funciona sua estrutura, sinta-se à vontade para pular para o próximo capítulo (clique aqui). Mas se você está pronto para uma revisão ou está apenas começando sua jornada com JSON, continue lendo e vamos juntos entender mais sobre JSON.
 
-Documentar estruturas como essa pode ser incrivelmente útil porque democratiza o desenvolvimento de clientes de API. Qualquer API pode ser a primeira de um desenvolvedor, por isso é importante tornar os requisitos claros e detalhados. Mesmo para desenvolvedores experientes, uma documentação completa cria eficiências e acelera o desenvolvimento. Todas essas ações podem, em última análise, levar a uma adoção mais ampla da sua API e produto.
+## Estrutura JSON
 
-As duas últimas frases parecem muito genéricas. Seria mais útil dizer como a validação pode ocorrer ou explicar o tratamento de erros com um exemplo.
+Vamos começar pelo básico. Como já mencionado, JSON é a sigla para "JavaScript Object Notation", que em uma tradução livre significa "Notação de Objeto em JavaScript". Esta nomenclatura pode parecer técnica, mas seu conceito é simples.
 
-## Como criar um esquema JSON
+### Objetos e Arrays
 
-Criar um esquema JSON para sua API pode ser facilitado com a ajuda de várias ferramentas e recursos. Por exemplo, o JSON Schema Generator é uma ferramenta online que permite criar um esquema JSON a partir de uma amostra de dados JSON ou de um rascunho de esquema JSON. O JSON Schema Editor é outra ferramenta online que permite editar e visualizar um esquema JSON em um modo gráfico ou de texto. Ele também ajuda a validar seus dados contra seu esquema. JSON Schema Lint é uma ferramenta online que permite validar seu esquema JSON e dados. Ele verifica a compatibilidade, além das melhores práticas. Por último, o JSON Schema Faker é uma ferramenta online que permite gerar dados fictícios a partir do seu esquema JSON, bem como exportar seus dados para vários formatos.
+A "raiz" da estrutura JSON se apoia em dois elementos fundamentais: objetos e arrays.
 
-Embora as ferramentas online possam ser convenientes, elas nem sempre são a opção mais segura.
+Objetos: Delimitados por chaves `{}`, representam uma estrutura que contém informações. Por exemplo:
 
-Ao usar esses serviços, você está confiando que o provedor da ferramenta protegerá seus dados. Embora eu acredite que eles levam a segurança a sério, sempre há um risco de seus dados serem comprometidos. Para alguns casos de uso, pode ser mais seguro confiar em uma ferramenta offline (por exemplo, GenSON, uma biblioteca Python que pode ser usada para gerar Esquemas JSON, que também possui uma ferramenta CLI).
-
-Ao optar por usar algo que funciona online, é crucial sempre verificar os dados que você está alimentando na ferramenta e garantir que não esteja colando informações ou dados sensíveis que não deseja compartilhar ou armazenar.
-
-## Como usar a validação de esquema JSON
-
-Usar a validação de esquema JSON para sua API pode ser benéfico dependendo das suas necessidades e preferências. Por exemplo, você pode usá-lo como um middleware para seu servidor de API para validar dados de requisição e resposta. Também pode enviar mensagens de erro apropriadas e códigos de status. Existem várias bibliotecas e frameworks que suportam isso, como Express, Fastify, Hapi e Restify. Além disso, você pode usá-lo como uma biblioteca do lado do cliente para seu consumidor de API para validar dados enviados e recebidos da sua API, bem como tratar erros e exceções com elegância. Existem várias bibliotecas e frameworks que suportam isso, como Ajv, JSON Schema Validator e tv4. Por último, você pode usá-lo como um gerador de código para sua API para gerar código do lado do cliente e do servidor a partir do seu esquema JSON. Também pode ser usado para dados fictícios e testes. Existem várias ferramentas e plataformas que suportam isso, como OpenAPI Generator, JSON Schema to TypeScript e Postman.
-
-Além disso, o esquema JSON pode ser usado para simplificar a reformulação de dados de formatos que são específicos para sua aplicação em formatos que a API (que o esquema JSON descreve) consome.
-
-Vai desde tipos que podem ser gerados em TypeScript para o JSON em questão e ver sugestões de preenchimento automático no seu editor de código ou IDE até o uso de ChatGPT, GitHub Copilot ou LLMs similares para escrever automaticamente conversores de dados. O que não seria tão possível sem ter um esquema JSON.
-
-Em uma Arquitetura Orientada a Eventos, usamos o esquema JSON como APIs para garantir que os dados compartilhados em nosso sistema distribuído aderem ao contrato, mantendo os dados legíveis por humanos.
-
-### Como documentar seu esquema JSON
-
-Documentar seu esquema JSON é uma etapa importante para tornar sua API fácil de entender e usar. Existem vários métodos para documentar seu esquema JSON, como usar anotações e palavras-chave de esquema JSON para adicionar descrições, exemplos, títulos e outros metadados, bem como definir regras de validação personalizadas e mensagens de erro. Além disso, você pode usar geradores de documentação de esquema JSON para criar documentação legível e interativa, ou padrões de documentação de esquema JSON para seguir melhores práticas e convenções. Existem várias ferramentas e plataformas que suportam esses métodos, como JSON Schema Docs, Docson, Redoc, OpenAPI Specification, JSON Hyper-Schema e JSON API.
-
-# Json Schema
-O JSON Schema é uma linguagem declarativa que permite anotar e validar documentos JSON.
-O JSON Schema possibilita o uso confiante e confiável do formato de dados JSON.
-
-## Beneficios
-Descreve seus formatos de dados existentes.
-Fornece documentação clara e legível para humanos e máquinas.
-Valida dados, o que é útil para:
-  Testes automatizados.
-  Garantir a qualidade dos dados submetidos pelo cliente.
-
-## Introdução 
-Vamos fingir que estamos interagindo com um catálogo de produtos baseado em JSON. Este catálogo tem um produto que possui:
-
-Um identificador: productId
-Um nome de produto: productName
-Um custo de venda para o consumidor: price
-Um conjunto opcional de tags: tags.
-Por exemplo:
-
-```
+```json
 {
-  "productId": 1,
-  "productName": "Uma porta verde",
-  "price": 12.50,
-  "tags": [ "casa", "verde" ]
+  "id": 123,
+  "nome": "Maria"
 }
 ```
 
-Embora geralmente direto, o exemplo deixa algumas perguntas em aberto. Aqui estão apenas algumas delas:
-
-O que é _productId_?
-O _productName_ é obrigatório?
-O preço pode ser zero (0)?
-Todas as tags são valores de string?
-
-Quando você está falando sobre um formato de dados, você quer ter metadados sobre o que as chaves significam, incluindo as entradas válidas para essas chaves. JSON Schema é um padrão IETF proposto sobre como responder a essas perguntas para dados.
-
-## Entendendo o JSON Schema
-O JSON Schema é uma ferramenta poderosa para validar a estrutura dos dados JSON. No entanto, aprender a usá-lo lendo sua especificação é como aprender a dirigir um carro olhando seus projetos. Você não precisa saber como um motor elétrico se encaixa se tudo o que você quer é buscar as compras. Portanto, este livro tem como objetivo ser o instrutor de direção amigável para o JSON Schema. É para aqueles que querem escrever e entender, mas talvez não estejam interessados em construir seu próprio carro - isto é, escrever seu próprio validador de JSON Schema - ainda.
-
-
-## O que é um esquema?
-Se você já usou XML Schema, RelaxNG ou ASN.1, provavelmente já sabe o que é um esquema e pode felizmente pular para a próxima seção. Se tudo isso parece gobbledygook para você, você veio ao lugar certo. Para definir o que é JSON Schema, provavelmente devemos primeiro definir o que é JSON.
-
-JSON é a sigla para "JavaScript Object Notation", um formato simples de troca de dados. Começou como uma notação para a world wide web. Como o JavaScript existe na maioria dos navegadores web, e o JSON é baseado em JavaScript, é muito fácil suportá-lo lá. No entanto, ele se mostrou útil o suficiente e simples o suficiente para que agora seja usado em muitos outros contextos que não envolvem navegação na web.
-
-Em seu coração, o JSON é construído nas seguintes estruturas de dados:
-
+Arrays: Delimitados por colchetes `[]`, são listas de itens. Por exemplo:
 
 ```json
-// objeto:
-{ "chave1": "valor1", "chave2": "valor2" }
+["Maçã", "Banana", "Cereja"]
 ```
 
+E ainda podemos ter Arrays de Objetos
 ```json
-// array:
-[ "primeiro", "segundo", "terceiro" ]
+[
+  {
+    "id": 123,
+    "nome": "Maria"
+  },
+  {
+    "id": 124,
+    "nome": "João"
+  },
+  {
+    "id": 125,
+    "nome": "Erick"
+  }
+]
 ```
+Estes são os conceitos básicos de objetos e arrays em JSON. Detalharemos agora um pouco mais sobre cada tipo e sua estrutura.
 
-```json
-// número:
-42
-3.1415926
-```
+### Propriedades na Estrutura JSON
 
-```json
-// string:
-"Esta é uma string"
-```
-
-```json
-// booleano:
-true
-false
-```
-
-```json
-// nulo:
-null
-```
-Com esses tipos de dados simples, todos os tipos de dados estruturados podem ser representados. Com essa grande flexibilidade vem uma grande responsabilidade, entretanto, já que o mesmo conceito poderia ser representado de inúmeras maneiras. Por exemplo, você poderia imaginar representar informações sobre uma pessoa em JSON de diferentes maneiras:
+A estrutura do JSON é composta por pares de chave e valor. Cada item desse par é chamado de "propriedade" do objeto raiz.
 
 ```json
 {
-  "nome": "George Washington",
-  "aniversario": "22 de fevereiro de 1732",
-  "endereco": "Mount Vernon, Virginia, Estados Unidos"
+  "chave": "valor",
+  "outraChave": "outroValor"
 }
 ```
 
+Diferentemente dos objetos em JavaScript, as chaves das propriedades JSON devem estar entre aspas duplas.
+
+#### O que é uma String em JSON?
+
+Por definição, uma string é uma sequência de caracteres. Em JSON, tanto a chave quanto o valor de uma propriedade do tipo string devem estar entre aspas duplas.
+
 ```json
 {
-  "primeiro_nome": "George",
-  "sobrenome": "Washington",
-  "aniversario": "1732-02-22",
-  "endereco": {
-    "endereco_rua": "3200 Mount Vernon Memorial Highway",
-    "cidade": "Mount Vernon",
-    "estado": "Virginia",
-    "pais": "Estados Unidos"
+  "chave": "Este texto é uma string, string sempre fica dentro de aspas"
+}
+```
+
+Se um objeto JSON tiver mais de uma propriedade, elas devem ser separadas por vírgulas. Além disso, é comum usar alguma notação para palavras compostas, como por exemplo o camelCase, snake_case, kebab-case e outros padrões para nomear as chaves. Ao escolher um padrão, é essencial manter a consistência ao longo do projeto para garantir clareza e facilidade de manutenção.
+
+#### O que é um Número em JSON?
+
+Enquanto algumas linguagens têm estruturas de dados específicas para inteiros, em JSON, usamos a estrutura genérica de número.
+
+```json
+{
+  "umaString": "Texto aqui",
+  "umNumero": 10,
+  "umNumeroDecimal": 4.99
+}
+```
+
+Os números podem ser inteiros ou de ponto flutuante. No entanto, em JSON, não há distinção específica entre eles. Números entre aspas são interpretados como strings.
+
+#### O que é um Booleano em JSON?
+
+Um booleano é uma estrutura de dados binária. Pode ser verdadeiro (true) ou falso (false).
+
+```json
+{
+  "umaString": "Texto aqui",
+  "umNumero": 123,
+  "umBooleano": true,
+  "umOutroBooleano": false
+}
+```
+
+#### O que é um Objeto em JSON?
+
+Um objeto em JSON é um conjunto de pares chave-valor. Ele pode conter propriedades de qualquer tipo. Objetos podem conter outros objetos como valores de uma chave.
+
+```json
+{
+  "id": 124,
+  "nome": "João",
+  "informacoesAdicionais": {
+    "tocaGuitarra": true,
+    "tocaPiano": false
   }
 }
 ```
-Ambas as representações são igualmente válidas, embora uma seja claramente mais formal que a outra. O design de um registro dependerá em grande parte de seu uso pretendido dentro do aplicativo, então não há uma resposta certa ou errada aqui. No entanto, quando um aplicativo diz "me dê um registro JSON para uma pessoa", é importante saber exatamente como esse registro deve ser organizado. Por exemplo, precisamos saber quais campos são esperados e como os valores são representados. É aí que entra o JSON Schema. O seguinte fragmento de JSON Schema descreve como o segundo exemplo acima é estruturado. Não se preocupe muito com os detalhes por enquanto. Eles são explicados nos capítulos subsequentes.
+
+A propriedade "informacoesAdicionais" neste exemplo é um objeto aninhado (Objeto aninhado é basicamente quando um objeto esta dentro dentro de outro objeto).
+
+#### O que é um Array em JSON?
+
+Um array é uma lista ordenada de valores.
 
 ```json
 {
-  "type": "object",
-  "properties": {
-    "primeiro_nome": { "type": "string" },
-    "sobrenome": { "type": "string" },
-    "aniversario": { "type": "string", "format": "date" },
-    "endereco": {
-      "type": "object",
-      "properties": {
-        "endereco_rua": { "type": "string" },
-        "numero": {"type": "number"},
-        "cidade": { "type": "string" },
-        "estado": { "type": "string" },
-        "pais": { "type" : "string" }
-      }
+  "id": 124,
+  "nome": "João",
+  "frutasPreferidas": ["Pêra", "Abacate", "Morango"]
+}
+```
+
+Arrays podem conter diferentes tipos de estruturas de dados.
+
+```json
+{
+  "diferentesTipos": ["João", 123, null, 1.99, "123", {"nome": "Maria"}]
+}
+```
+
+#### O que é null em JSON?
+
+Null representa a ausência de valor.
+
+```json
+{
+  "id": 124,
+  "nome": "João",
+  "informacoesAdicionais": null
+}
+```
+
+## Aprendi o que é JSON?
+
+Para fixarmos o nosso conhecimento em JSON e darmos continuidade nas próximas seções vamos subir um pequena API que retorna uma resposta JSON.
+
+## JSON Schema
+
+### Por que usar a validação de JSON Schema?
+
+A validação através do JSON Schema é mais do que uma técnica: é uma estratégia que potencializa a eficiência e confiabilidade das APIs. Se ainda não decidiu se deve usar aqui estão quatro razões fundamentais para adotá-la:
+
+#### Garantia de Qualidade e Consistência
+
+A validação assegura que os dados processados sejam consistentes e de alta qualidade. Isso evita erros e falhas que podem surgir de dados mal formatados.
+
+> Exemplo: Suponha que sua API deva retornar informações sobre um usuário, incluindo nome, idade e e-mail. Com o JSON Schema, você pode definir que o nome e o e-mail são strings obrigatórias, enquanto a idade é um número inteiro. Qualquer resposta que não atenda a esses critérios será sinalizada.
+
+#### Documentação Simplificada e Precisa
+
+O JSON Schema serve como uma referência clara para o esquema da API, facilitando a comunicação entre equipes e garantindo que todos estejam alinhados quanto à estrutura esperada.
+
+> Exemplo: Se sua API deve retornar uma lista de produtos, o esquema pode especificar que cada produto tem um nome (string), preço (número decimal) e disponibilidade (booleano). Isso torna claro para os desenvolvedores o formato esperado da resposta.
+
+#### Feedback Detalhado e Acionável
+
+A validação proporciona feedbacks específicos sobre erros, facilitando a correção e garantindo que os consumidores da API saibam exatamente o que precisa ser ajustado.
+
+> Exemplo: Se um campo obrigatório estiver ausente na resposta da API, o JSON Schema pode retornar uma mensagem como "O campo 'nome' é obrigatório e está ausente na resposta".
+
+#### Otimização do Processo de Desenvolvimento
+
+Com um esquema bem definido, é possível automatizar muitos aspectos do desenvolvimento, desde a geração de código até testes.
+
+>Exemplo: Ao desenvolver uma nova funcionalidade que retorna detalhes de um pedido, o esquema pode ser usado para gerar automaticamente testes que verificam se a resposta da API está em conformidade com o esperado.
+
+Em resumo, a validação de JSON Schema é uma ferramenta poderosa que, quando bem aplicada, pode melhorar significativamente a robustez e confiabilidade de uma API.
+
+### Como criar um JSON Schema
+
+Ao desenvolver uma API, é crucial garantir a consistência e a qualidade dos dados transmitidos. Uma das maneiras de fazer isso é através do uso de um JSON Schema. Vamos explorar como criar um esquema para a resposta da rota GET `/estudantes` da nossa API:
+
+```json
+{
+  "matricula": 12345,
+  "primeiroNome": "João",
+  "sobrenome": "Silva",
+  "idade": 22,
+  "email": "joao.silva@gmail.com",
+  "escolaridade": "Ensino Medio",
+  "cursos": [
+    {
+      "materia": "Matemática",
+      "notaAtual": 85
+    }, 
+    {
+      "materia": "Física",
+      "notaAtual": 78.5
+    },
+    {
+      "materia": "Química",
+      "notaAtual": 68
     }
+  ],
+  "pais": {
+    "mae": "Antonia Silva",
+    "pai": "Geraldo Silva"
   }
 }
 ```
 
-Você deve ter notado que o próprio JSON Schema é escrito em JSON. Ele é um dado em si, não um programa de computador. É apenas um formato declarativo para "descrever a estrutura de outros dados". Esta é tanto a sua força quanto a sua fraqueza (que compartilha com outras linguagens de esquema similares). É fácil descrever concisamente a estrutura superficial dos dados e automatizar a validação dos dados contra ela. No entanto, como um JSON Schema não pode conter código arbitrário, existem certas restrições sobre as relações entre os elementos de dados que não podem ser expressas. Qualquer "ferramenta de validação" para um formato de dados suficientemente complexo, portanto, provavelmente terá duas fases de validação: uma no nível do esquema (ou estrutural) e uma no nível semântico. A última verificação provavelmente precisará ser implementada usando uma linguagem de programação de propósito geral.
+Neste exemplo, temos informações sobre um estudante, incluindo detalhes como nome, idade, matrícula e os cursos que está cursando. Ao analisar a estrutura, podemos identificar diferentes tipos de dados, como inteiros (`matricula` e `idade`), strings com validações simples (`primeiroNome`, `sobrenome`), strings com formatos específicos (`email` e `escolaridade`), arrays (`cursos`) e objetos aninhados (`pais`).
 
-## Iniciando o esquema
-Para iniciar uma definição de esquema, vamos começar com um esquema JSON básico.
-
-Começamos com quatro propriedades chamadas palavras-chave que são expressas como chaves JSON.
-
-Sim. O padrão usa um documento de dados JSON para descrever documentos de dados, mais frequentemente que também são documentos de dados JSON, mas podem estar em qualquer número de outros tipos de conteúdo, como text/xml.
-
-A palavra-chave _'$schema'_ afirma que este esquema é escrito de acordo com um rascunho específico do padrão e usado por uma variedade de razões, principalmente controle de versão.
-
-A palavra-chave _'$id'_ define um URI para o esquema e o URI base que outras referências de URI dentro do esquema são resolvidas.
-
-As palavras-chave _'title'_ e _'description'_ são apenas anotações do esquema e não impõem restrições aos dados sendo validados. Elas servem para declarar a intenção do esquema.
-
-A palavra-chave _'type'_, é responsável pela validação, impõe a primeira restrição aos nossos dados JSON, que neste caso, precisam ser um objeto JSON.
+Para começar a definir nosso JSON Schema, iniciamos com:
 
 ```json
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.com/product.schema.json",
-  "title": "Product",
-  "description": "Um produto no catálogo",
+  "$id": "https://api-school-demo.erickribeiro.me/json-schemas/estudantes.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Estudantes",
+  "description": "Esquema para a resposta da API que retorna informações dos estudantes.",
   "type": "object"
 }
 ```
 
-## Definindo as propriedades
-productId é um valor numérico que identifica exclusivamente um produto. Como este é o identificador canônico para um produto, não faz sentido ter um produto sem um, então é obrigatório.
+Aqui, o `"$id"` serve como um identificador único para o nosso esquema, útil para referências futuras. O `"$schema"` especifica a versão do padrão JSON Schema que estamos usando. Os campos `"title"` e `"description"` fornecem informações adicionais sobre o esquema, mas não impõem validações. Por fim, o campo `"type"` define que os dados devem ser um objeto JSON.
 
-Em termos de JSON Schema, atualizamos nosso esquema para adicionar:
+Com esse esquema básico em mãos, podemos começar a adicionar mais detalhes e restrições para garantir que os dados recebidos se alinhem às nossas expectativas.
 
-A palavra-chave de validação de propriedades.
-A chave productId.
-A anotação de esquema de descrição e a palavra-chave de validação de tipo são observadas - nós cobrimos ambas na seção anterior.
-A palavra-chave de validação obrigatória listando productId.
+#### Definindo as propriedades
 
-```json
-{
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.com/product.schema.json",
-  "title": "Product",
-  "description": "Um produto do catálogo da Acme",
-  "type": "object",
-  "properties": {
-    "productId": {
-      "description": "O identificador único para um produto",
-      "type": "integer"
-    }
-  },
-  "required": [ "productId" ]
-}
-```
+A `matricula` é um valor numérico que identifica exclusivamente um estudante. Sendo o identificador único do aluno, é um valor obrigatório para cada estudante.
 
-productName é um valor de string que descreve um produto. Como não há muito em um produto sem um nome, ele também é necessário.
-Como a palavra-chave de validação requerida é uma matriz de strings, podemos notar várias chaves como necessárias; Agora incluímos productName.
-Não há realmente nenhuma diferença entre productId e productName - incluímos ambos para completude, pois os computadores normalmente prestam atenção a identificadores e os humanos normalmente prestam atenção a nomes.
+Podemos atualizar nosso JSON Schema da seguinte forma:
 
 ```json
-{
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.com/product.schema.json",
-  "title": "Product",
-  "description": "Um produto do catálogo da Acme",
-  "type": "object",
-  "properties": {
-    "productId": {
-      "description": "O identificador único para um produto",
-      "type": "integer"
-    },
-    "productName": {
-      "description": "Nome do produto",
-      "type": "string"
-    }
-  },
-  "required": [ "productId", "productName" ]
-}
+"properties": {
+  "matricula": {
+    "description": "O identificador único do estudante.",
+    "type": "integer"
+  }
+},
+"required": ["matricula"]
 ```
+
+Aproveitando a inclusão de validações para propriedades numéricas, vamos adicionar uma validação para a propriedade `idade`. Além de tornar este campo obrigatório, queremos garantir que o valor não seja menor que 0 e nem maior que 120. Isso se baseia na premissa de que um estudante dificilmente terá mais de 120 anos e certamente não terá menos de 0 anos. Lembrando que o mais correto é esta validação estar alinhada com as regras de negocio da aplicação.
+
+```json
+"properties": {
+  "matricula": {
+    "description": "O identificador único do estudante.",
+    "type": "integer"
+  },
+  "idade": {
+    "description": "Idade do estudante.",
+    "type": "integer",
+    "minimum": 0,
+    "maximum": 120
+  }
+},
+"required": ["matricula", "idade"]
+```
+
+Dessa forma, garantimos que os dados inseridos estejam de acordo com as regras estabelecidas para cada propriedade.
 
 ## Aprofundando nas propriedades
 De acordo com o dono da loja, não existem produtos gratuitos. ;)
@@ -466,6 +498,183 @@ Em seguida, adicionamos uma referência a este novo esquema para que ele possa s
   "required": [ "productId", "productName", "price" ]
 }
 ```
+
+Criar um esquema JSON para sua API pode ser facilitado com a ajuda de várias ferramentas e recursos. Por exemplo, o JSON Schema Generator é uma ferramenta online que permite criar um esquema JSON a partir de uma amostra de dados JSON ou de um rascunho de esquema JSON. O JSON Schema Editor é outra ferramenta online que permite editar e visualizar um esquema JSON em um modo gráfico ou de texto. Ele também ajuda a validar seus dados contra seu esquema. JSON Schema Lint é uma ferramenta online que permite validar seu esquema JSON e dados. Ele verifica a compatibilidade, além das melhores práticas. Por último, o JSON Schema Faker é uma ferramenta online que permite gerar dados fictícios a partir do seu esquema JSON, bem como exportar seus dados para vários formatos.
+
+Embora as ferramentas online possam ser convenientes, elas nem sempre são a opção mais segura.
+
+Ao usar esses serviços, você está confiando que o provedor da ferramenta protegerá seus dados. Embora eu acredite que eles levam a segurança a sério, sempre há um risco de seus dados serem comprometidos. Para alguns casos de uso, pode ser mais seguro confiar em uma ferramenta offline (por exemplo, GenSON, uma biblioteca Python que pode ser usada para gerar Esquemas JSON, que também possui uma ferramenta CLI).
+
+Ao optar por usar algo que funciona online, é crucial sempre verificar os dados que você está alimentando na ferramenta e garantir que não esteja colando informações ou dados sensíveis que não deseja compartilhar ou armazenar.
+
+## Como usar a validação de esquema JSON
+
+Usar a validação de esquema JSON para sua API pode ser benéfico dependendo das suas necessidades e preferências. Por exemplo, você pode usá-lo como um middleware para seu servidor de API para validar dados de requisição e resposta. Também pode enviar mensagens de erro apropriadas e códigos de status. Existem várias bibliotecas e frameworks que suportam isso, como Express, Fastify, Hapi e Restify. Além disso, você pode usá-lo como uma biblioteca do lado do cliente para seu consumidor de API para validar dados enviados e recebidos da sua API, bem como tratar erros e exceções com elegância. Existem várias bibliotecas e frameworks que suportam isso, como Ajv, JSON Schema Validator e tv4. Por último, você pode usá-lo como um gerador de código para sua API para gerar código do lado do cliente e do servidor a partir do seu esquema JSON. Também pode ser usado para dados fictícios e testes. Existem várias ferramentas e plataformas que suportam isso, como OpenAPI Generator, JSON Schema to TypeScript e Postman.
+
+Além disso, o esquema JSON pode ser usado para simplificar a reformulação de dados de formatos que são específicos para sua aplicação em formatos que a API (que o esquema JSON descreve) consome.
+
+Vai desde tipos que podem ser gerados em TypeScript para o JSON em questão e ver sugestões de preenchimento automático no seu editor de código ou IDE até o uso de ChatGPT, GitHub Copilot ou LLMs similares para escrever automaticamente conversores de dados. O que não seria tão possível sem ter um esquema JSON.
+
+Em uma Arquitetura Orientada a Eventos, usamos o esquema JSON como APIs para garantir que os dados compartilhados em nosso sistema distribuído aderem ao contrato, mantendo os dados legíveis por humanos.
+
+### Como documentar seu esquema JSON
+
+Documentar seu esquema JSON é uma etapa importante para tornar sua API fácil de entender e usar. Existem vários métodos para documentar seu esquema JSON, como usar anotações e palavras-chave de esquema JSON para adicionar descrições, exemplos, títulos e outros metadados, bem como definir regras de validação personalizadas e mensagens de erro. Além disso, você pode usar geradores de documentação de esquema JSON para criar documentação legível e interativa, ou padrões de documentação de esquema JSON para seguir melhores práticas e convenções. Existem várias ferramentas e plataformas que suportam esses métodos, como JSON Schema Docs, Docson, Redoc, OpenAPI Specification, JSON Hyper-Schema e JSON API.
+
+
+
+
+
+
+
+
+---
+
+Ao trabalhar com JSON, é crucial garantir a qualidade e a integridade dos dados. A compreensão clara de cada tipo e sua representação ajuda a evitar erros e garante uma comunicação de dados eficiente.
+
+
+
+
+
+
+
+
+
+
+
+
+
+```json
+// objeto:
+{ "chave1": "valor1", "chave2": "valor2" }
+```
+
+```json
+// array:
+[ "primeiro", "segundo", "terceiro" ]
+```
+
+```json
+// número:
+42
+3.1415926
+```
+
+```json
+// string:
+"Esta é uma string"
+```
+
+```json
+// booleano:
+true
+false
+```
+
+```json
+// nulo:
+null
+```
+Com esses tipos de dados simples, todos os tipos de dados estruturados podem ser representados. Com essa grande flexibilidade vem uma grande responsabilidade, entretanto, já que o mesmo conceito poderia ser representado de inúmeras maneiras. Por exemplo, você poderia imaginar representar informações sobre uma pessoa em JSON de diferentes maneiras:
+
+```json
+{
+  "nome": "George Washington",
+  "aniversario": "22 de fevereiro de 1732",
+  "endereco": "Mount Vernon, Virginia, Estados Unidos"
+}
+```
+
+```json
+{
+  "primeiro_nome": "George",
+  "sobrenome": "Washington",
+  "aniversario": "1732-02-22",
+  "endereco": {
+    "endereco_rua": "3200 Mount Vernon Memorial Highway",
+    "cidade": "Mount Vernon",
+    "estado": "Virginia",
+    "pais": "Estados Unidos"
+  }
+}
+```
+Ambas as representações são igualmente válidas, embora uma seja claramente mais formal que a outra. O design de um registro dependerá em grande parte de seu uso pretendido dentro do aplicativo, então não há uma resposta certa ou errada aqui. No entanto, quando um aplicativo diz "me dê um registro JSON para uma pessoa", é importante saber exatamente como esse registro deve ser organizado. Por exemplo, precisamos saber quais campos são esperados e como os valores são representados. É aí que entra o JSON Schema. O seguinte fragmento de JSON Schema descreve como o segundo exemplo acima é estruturado. Não se preocupe muito com os detalhes por enquanto. Eles são explicados nos capítulos subsequentes.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "primeiro_nome": { "type": "string" },
+    "sobrenome": { "type": "string" },
+    "aniversario": { "type": "string", "format": "date" },
+    "endereco": {
+      "type": "object",
+      "properties": {
+        "endereco_rua": { "type": "string" },
+        "numero": {"type": "number"},
+        "cidade": { "type": "string" },
+        "estado": { "type": "string" },
+        "pais": { "type" : "string" }
+      }
+    }
+  }
+}
+```
+
+Você deve ter notado que o próprio JSON Schema é escrito em JSON. Ele é um dado em si, não um programa de computador. É apenas um formato declarativo para "descrever a estrutura de outros dados". Esta é tanto a sua força quanto a sua fraqueza (que compartilha com outras linguagens de esquema similares). É fácil descrever concisamente a estrutura superficial dos dados e automatizar a validação dos dados contra ela. No entanto, como um JSON Schema não pode conter código arbitrário, existem certas restrições sobre as relações entre os elementos de dados que não podem ser expressas. Qualquer "ferramenta de validação" para um formato de dados suficientemente complexo, portanto, provavelmente terá duas fases de validação: uma no nível do esquema (ou estrutural) e uma no nível semântico. A última verificação provavelmente precisará ser implementada usando uma linguagem de programação de propósito geral.
+
+
+
+
+# Json Schema
+O JSON Schema é uma linguagem declarativa que permite anotar e validar documentos JSON.
+O JSON Schema possibilita o uso confiante e confiável do formato de dados JSON.
+
+## Beneficios
+Descreve seus formatos de dados existentes.
+Fornece documentação clara e legível para humanos e máquinas.
+Valida dados, o que é útil para:
+  Testes automatizados.
+  Garantir a qualidade dos dados submetidos pelo cliente.
+
+## Introdução 
+Vamos fingir que estamos interagindo com um catálogo de produtos baseado em JSON. Este catálogo tem um produto que possui:
+
+Um identificador: productId
+Um nome de produto: productName
+Um custo de venda para o consumidor: price
+Um conjunto opcional de tags: tags.
+Por exemplo:
+
+```
+{
+  "productId": 1,
+  "productName": "Uma porta verde",
+  "price": 12.50,
+  "tags": [ "casa", "verde" ]
+}
+```
+
+Embora geralmente direto, o exemplo deixa algumas perguntas em aberto. Aqui estão apenas algumas delas:
+
+O que é _productId_?
+O _productName_ é obrigatório?
+O preço pode ser zero (0)?
+Todas as tags são valores de string?
+
+Quando você está falando sobre um formato de dados, você quer ter metadados sobre o que as chaves significam, incluindo as entradas válidas para essas chaves. JSON Schema é um padrão IETF proposto sobre como responder a essas perguntas para dados.
+
+## Entendendo o JSON Schema
+O JSON Schema é uma ferramenta poderosa para validar a estrutura dos dados JSON. No entanto, aprender a usá-lo lendo sua especificação é como aprender a dirigir um carro olhando seus projetos. Você não precisa saber como um motor elétrico se encaixa se tudo o que você quer é buscar as compras. Portanto, este livro tem como objetivo ser o instrutor de direção amigável para o JSON Schema. É para aqueles que querem escrever e entender, mas talvez não estejam interessados em construir seu próprio carro - isto é, escrever seu próprio validador de JSON Schema - ainda.
+
+
+## O que é um esquema?
+Se você já usou XML Schema, RelaxNG ou ASN.1, provavelmente já sabe o que é um esquema e pode felizmente pular para a próxima seção. Se tudo isso parece gobbledygook para você, você veio ao lugar certo. Para definir o que é JSON Schema, provavelmente devemos primeiro definir o que é JSON.
+
+
+
+## Iniciando o esquema
+P
 
 ## Dando uma olhada nos dados para o nosso esquema JSON definido
 
