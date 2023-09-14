@@ -1,21 +1,20 @@
 # Garantindo a Qualidade de APIs com Validação de JSON Schema
 
-No mundo digital de hoje, a capacidade de compreender e manipular dados é essencial. Isso se torna ainda mais relevante em um cenário onde temos várias aplicações se comunicando uma com a outra. O JSON, ou Javascript Object Notation, surgiu como um "padrão" para esta comunicação, facilitando a troca de dados entre diferentes plataformas e linguagens. 
+No mundo digital de hoje, a capacidade de compreender e manipular dados é essencial. Isso se torna ainda mais relevante em um cenário onde temos várias aplicações se comunicando uma com a outra. O JSON, surgiu como um "padrão" para esta comunicação, facilitando a troca de dados entre diferentes plataformas e linguagens. 
 
 Entender sua estrutura e nuances não é apenas uma habilidade técnica, mas uma necessidade para garantir a fluidez e a eficiência da troca de informações. Neste artigo, vamos explorar o JSON Schema, um aliado essencial que nos ajuda a assegurar que os dados transmitidos mantenham sua integridade e conformidade.
 
-> Na próxima seção vamos abordar a estrutura de um JSON, então, se você já tem conhecimentos sobre o que é JSON e como funciona sua estrutura, sinta-se à vontade para pular para o próximo capítulo (clique aqui). Mas se você está pronto para uma revisão ou está apenas começando sua jornada com JSON, continue lendo e vamos juntos entender mais sobre JSON.
+> Na próxima seção vamos abordar primeiramente a estrutura de um JSON, então, se você já tem conhecimentos sobre o que é JSON e como funciona sua estrutura, sinta-se à vontade para pular para o próximo capítulo (clique aqui). Mas se você está pronto para uma revisão ou está apenas começando sua jornada com JSON, continue lendo e vamos juntos entender mais sobre JSON.
 
 ## Estrutura JSON
 
-Vamos começar pelo básico. Como já mencionado, JSON é a sigla para "JavaScript Object Notation", que em uma tradução livre significa "Notação de Objeto em JavaScript". Esta nomenclatura pode parecer técnica, mas seu conceito é simples.
+Vamos começar pelo básico. JSON é a sigla para "JavaScript Object Notation", que em uma tradução livre significa "Notação de Objeto em JavaScript". Esta nomenclatura pode parecer técnica, mas seu conceito é simples, ser um formato de texto leve e de fácil leitura para troca de dados.
 
 ### Objetos e Arrays
 
-A "raiz" da estrutura JSON se apoia em dois elementos fundamentais: objetos e arrays.
+A "raiz" da estrutura JSON se apoia em dois elementos fundamentais: `objetos` e `arrays`. Esses elementos são a base para a construção de qualquer estrutura de dados em JSON, permitindo a representação de informações de forma organizada e hierárquica.
 
 Objetos: Delimitados por chaves `{}`, representam uma estrutura que contém informações. Por exemplo:
-
 ```json
 {
   "id": 123,
@@ -24,12 +23,11 @@ Objetos: Delimitados por chaves `{}`, representam uma estrutura que contém info
 ```
 
 Arrays: Delimitados por colchetes `[]`, são listas de itens. Por exemplo:
-
 ```json
 ["Maçã", "Banana", "Cereja"]
 ```
 
-E ainda podemos ter Arrays de Objetos
+E ainda podemos ter Arrays de Objetos, que combinam ambos os conceitos. Por exemplo:
 ```json
 [
   {
@@ -139,7 +137,7 @@ Arrays podem conter diferentes tipos de estruturas de dados.
 
 #### O que é null em JSON?
 
-Null representa a ausência de valor.
+`Null` representa a ausência de valor.
 
 ```json
 {
@@ -271,6 +269,32 @@ Aproveitando a inclusão de validações para propriedades numéricas, vamos adi
 ```
 
 Dessa forma, garantimos que os dados inseridos estejam de acordo com as regras estabelecidas para cada propriedade.
+
+Para validar "strings comuns", ou seja, aquelas que não seguem um padrão específico, podemos estabelecer limites para o número de caracteres. Tomando como exemplo os campos `primeiroNome` e `sobrenome`, podemos adicionar as seguintes definições ao nosso JSON Schema:
+
+```json
+"properties": {
+  "primeiroNome": {
+    "description": "O primeiro nome do estudante.",
+    "type": "string",
+    "minLength": 3,
+    "maxLength": 128
+  },
+  "sobrenome": {
+    "description": "O sobrenome do estudante.",
+    "type": "string",
+    "minLength": 3,
+    "maxLength": 128
+  }
+},
+"required": ["matricula", "idade", "primeiroNome", "sobrenome"]
+```
+
+Este documento é bastante claro. Os campos `primeiroNome` e `sobrenome` são do tipo string e devem conter, no mínimo, 3 caracteres e, no máximo, 128 caracteres. Além disso, são campos obrigatórios, assim como os campos `matricula` e `idade` que foram definidos anteriormente.
+
+> Vale ressaltar que, para números, utilizamos `minimum` e `maximum` para definir valores mínimos e máximos, respectivamente. Já para strings, quando queremos estabelecer um limite de caracteres, usamos `minLength` e `maxLength`.
+
+
 
 ## Aprofundando nas propriedades
 De acordo com o dono da loja, não existem produtos gratuitos. ;)
