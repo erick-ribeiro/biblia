@@ -294,6 +294,170 @@ Este documento é bastante claro. Os campos `primeiroNome` e `sobrenome` são do
 
 > Vale ressaltar que, para números, utilizamos `minimum` e `maximum` para definir valores mínimos e máximos, respectivamente. Já para strings, quando queremos estabelecer um limite de caracteres, usamos `minLength` e `maxLength`.
 
+Ainda no contexto de string temos as "strings padronizadas" que são aquelas string que contem um texto que segue algum tipo de padrão, como por exemplo `email` e `escolaridade`. No caso do e-mail podemos usar um regex para validar se é um e-mail valido.
+
+```json
+{
+  "properties": {
+    "email": {
+      "description": "E-mail válido do estudante.",
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+    }
+  }
+}
+```
+O uso de expressões regulares (regex) para identificar e validar o padrão de uma string em um schema é extremamente útil. No entanto, quando se trata de validar endereços de e-mail, há uma abordagem mais específica e robusta. Em vez de usar uma expressão regular, podemos utilizar o atributo `format` disponível no JSON Schema. Para e-mails, especificamente, podemos usar `format: email`, que valida o campo de acordo com as regras estabelecidas pela RFC 5322.
+
+Existem outros valores para o atributo format que podem ser usados para validar diferentes tipos de dados. O ideal é consultar a documentação da biblioteca que ira utilizar para fazer as validações para poder identificafr quais validações conseguimos utilizar. Um exemplo de como ficaria no JSON Schema utilizando o formats.
+
+```json
+"properties": {
+  "email": {
+    "type": "string",
+    "format": "email"
+  },
+}
+```
+
+No caso do campo `escolaridade`, uma vez que ele sempre recebe um valor fixo que pode ser `ensino fundamental`, `ensino médio` ou `ensino superior`, podemos utilizar o "enum" para especificar os possíveis valores do tipo string que este campo pode aceitar.
+
+```json
+"properties": {
+  "escolaridade": {
+    "type": "string",
+    "enum": ["ensino fundamental", "ensino médio", "ensino superior"]
+  }
+}
+```
+
+Poderiamos fazer esta validação se uma chave sempre ira receber um valor fixo utilizando o regex, e neste caso ficaria assim:
+
+```json
+"properties": {
+  "escolaridade": {
+    "type": "string",
+    "pattern": "^(ensino fundamental|ensino médio|ensino superior)$"
+  }
+}
+```
+> A validação através do regex acaba se tornando uma ferramenta extremamente poderosa e flexível, permitindo a criação de padrões específicos e adaptáveis para diversos cenários e necessidades.
+
+Antes de prosseguirmos nos aprofundando pelas propriedades vamos sintetizar o JSON Schema que criamos ate agora e rever todas as validações que criamos.
+
+```json
+{
+  "$id": "https://api-school-demo.erickribeiro.me/json-schemas/estudantes.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Estudantes",
+  "description": "Esquema para a resposta da API que retorna informações dos estudantes.",
+  "type": "object",
+  "properties": {
+    "matricula": {
+      "description": "O identificador único do estudante.",
+      "type": "integer"
+    },
+    "idade": {
+      "description": "Idade do estudante.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 120
+    },
+    "primeiroNome": {
+      "description": "O primeiro nome do estudante.",
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 128,
+      "pattern": "^[a-zA-Z]+$"
+    },
+    "sobrenome": {
+      "description": "O sobrenome do estudante.",
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 128,
+      "pattern": "^[a-zA-Z]+$"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "escolaridade": {
+      "type": "string",
+      "enum": ["ensino fundamental", "ensino médio", "ensino superior"]
+    }
+  },
+  "required": ["matricula", "idade", "primeiroNome", "sobrenome", "email", "escolaridade"]
+}
+```
+
+> Neste JSON Schema, estamos validando as informações essenciais de um estudante. Verificamos se a matrícula é um id numerico, se a idade é um numero entre 0 e 120 anos. Além disso, estamos garantindo que o `primeiroNome` e o `sobrenome` do estudante contenham apenas letras, respeitando um limite mínimo de 3 caracteres e um máximo de 128. O campo `email` é validado para garantir que ele siga o formato padrão de endereços de e-mail. Por fim, a `escolaridade` do estudante é verificada para assegurar que ela corresponda a um dos três níveis predefinidos: ensino fundamental, ensino médio ou ensino superior. Todos esses campos são obrigatórios, garantindo que as informações mais críticas sobre o estudante estejam sempre presentes.
+
+### Validando Arrays e Objetos Aninhados
+
+Até agora, focamos em propriedades simples do nosso JSON, mas muitas vezes, os dados são mais complexos e envolvem listas ou objetos aninhados. No nosso exemplo, temos o campo `cursos`, que é um array de objetos, e o campo `pais`, que é um objeto com propriedades aninhadas.
+
+#### Validando Arrays
+
+Para validar arrays, usamos a palavra-chave `items` para definir o esquema dos itens dentro do array. No nosso exemplo, cada item no array `cursos` é um objeto que contém informações sobre uma matéria e a nota atual do estudante nessa matéria.
+
+Vamos definir o esquema para o campo `cursos`:
+
+```json
+"cursos": {
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "materia": {
+        "type": "string",
+        "minLength": 1
+      },
+      "notaAtual": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 100
+      }
+    },
+    "required": ["materia", "notaAtual"]
+  }
+}
+```
+
+Neste esquema, estamos especificando que `cursos` é um array e que cada item dentro deste array deve ser um objeto com as propriedades `materia` e `notaAtual`. A matéria é uma string com pelo menos um caractere, e a nota atual é um número entre 0 e 100.
+
+#### Validando Objetos Aninhados
+
+Para validar objetos aninhados, o processo é semelhante ao que fizemos até agora. Vamos definir o esquema para o campo `pais`:
+
+```json
+"pais": {
+  "type": "object",
+  "properties": {
+    "mae": {
+      "type": "string",
+      "minLength": 1
+    },
+    "pai": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": ["mae", "pai"]
+}
+```
+
+Aqui, estamos especificando que `pais` é um objeto com duas propriedades: `mae` e `pai`. Ambas são strings com pelo menos um caractere e são campos obrigatórios.
+
+---
+
+Com isso, abordamos os principais aspectos da validação de dados usando JSON Schema. Ao entender como validar propriedades simples, arrays e objetos aninhados, você está bem equipado para lidar com a maioria dos cenários de validação de dados em APIs. No entanto, o JSON Schema oferece ainda mais flexibilidade e opções para cenários mais complexos. Portanto, se você se deparar com um desafio de validação mais intricado, recomendo consultar a documentação oficial do JSON Schema para explorar todas as possibilidades disponíveis.
+
+E aí, pronto para mergulhar ainda mais fundo no mundo da validação de dados? No próximo post, exploraremos algumas técnicas avançadas e dicas práticas para otimizar seu esquema e garantir que seus dados estejam sempre em conformidade. Fique ligado!
+
+
+
+
+Espero que isso ajude!
 
 
 ## Aprofundando nas propriedades

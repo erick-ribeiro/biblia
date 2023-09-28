@@ -46,3 +46,6 @@ Claro! Abordar o tema "Qualidade de Software" é uma excelente escolha, pois é 
 
 **7. Conclusão**
 - Reflexão sobre a crescente necessidade de focar na qualidade em um mundo tecnológico em constante evolução.
+
+
+https://libraryoftesting.com/
