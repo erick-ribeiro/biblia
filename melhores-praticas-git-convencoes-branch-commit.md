@@ -147,6 +147,7 @@ Os padrões e exemplos que discutimos aqui são guias que podem ajudar a moldar 
 
 Desejo a você sucesso em suas jornadas de desenvolvimento e espero que estas dicas contribuam para projetos mais organizados e equipes mais alinhadas!
 
+1
 
 ---
 
