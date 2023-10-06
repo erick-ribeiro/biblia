@@ -147,7 +147,15 @@ Os padrões e exemplos que discutimos aqui são guias que podem ajudar a moldar 
 
 Desejo a você sucesso em suas jornadas de desenvolvimento e espero que estas dicas contribuam para projetos mais organizados e equipes mais alinhadas!
 
-1
+
+feat(teste): implementa teste automatizado para o login
+
+neste commit, foi criado um novo teste automatizado para a
+funcionalidade de login. O teste assegura que, ao usar credenciais 
+corretas, o usuário é levado para a página principal sem erros.
+
+card 123
+
 
 ---
 
