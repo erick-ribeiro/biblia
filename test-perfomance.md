@@ -162,3 +162,23 @@ Não é executado no NodeJS
 JavaScript geralmente não é bem adequado para alto desempenho. Para alcançar o máximo de desempenho, a ferramenta em si é escrita em Go, incorporando um runtime de JavaScript que permite fácil scripting de testes.
 
 ## Rodando o K6
+
+
+
+Conversa com o SR. Perfomance do K6s
+
+tendencias
+    ferramentas novas são diferentes das ferramentas do passado
+    antes tinhamos plataformas muito grande que fazia tudo muito bem
+    porem agora temos ferramentas mais enxutas
+
+    os testes de perfomance não é so do engenheiro e sim que todos possam contribuir as ferramentas tem que ser leve, "o rei artur nao deve ser o unico a levantar a espada"
+
+    solucoes monoliticas e antes era muito importante fazer um teste de load e geralmente os testes eram enorme
+
+    hoje temos uma onde mais continua mais agil e nesta onda ja temos uma aplicacao em producao nao estamos lancançado o big ban, estamos adicionando pequenas novas funcionalidades 
+
+    cereja do bolo é observar, hoje temos tantas maneiras de observar o desempenho das aplicaões 
+
+
+todo mundo quer um software que seja eficiente e resonda rapido
