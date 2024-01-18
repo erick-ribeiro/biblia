@@ -1,0 +1,43 @@
+Para que servem os testes automatizados?
+
+Seja você alguém que já escreveu alguns testes no passado ou não, provavelmente já ouviu que os testes podem ser úteis. E eu sei que você também já ouviu histórias sobre testes que são mais uma chatice e incômodo do que qualquer ajuda. Francamente, acredito que ambos os lados estão certos! Mas para entender o porquê, vou primeiro contar um pequeno segredo. Nenhum teste é inerentemente útil apenas porque existe. Um teste torna-se útil quando cumpre seu propósito.
+
+Então, qual é exatamente esse propósito?
+
+Como o nome implica, os testes automatizados estão aqui para nos ajudar a automatizar algo. Pegamos um estado particular da nossa aplicação, realizamos algumas ações e verificamos se o resultado esperado esta correspondendo. Isso é o que qualquer teste faz, e ainda assim alguns testes são mais úteis que outros. Existe precisamente uma coisa que define e controla essa diferença.
+
+A intenção
+Assim como cada pedaço de código existe por um motivo, cada teste existe para verificar a intenção por trás desse código.
+
+Um parágrafo é renderizado quando o usuário acessa uma página, uma solicitação é feita quando eles clicam em um botão, os dados corretos são retornados quando uma função é chamada—não há limite para as coisas que queremos que os computadores façam. Em seguida, usamos uma linguagem de programação que o computador entende para implementar essa intenção.
+
+Às vezes, a intenção e a implementação são as mesmas. Veja esta função simples que soma dois números:
+
+```
+function sum(a, b) {
+  return a + b
+}
+```
+
+A intenção é que a função de adição some quaisquer dois números dados a e b. Sua implementação literalmente faz apenas isso: a + b.
+
+No mundo real, no entanto, nossas intenções raramente são tão simples assim. Frequentemente escrevemos centenas de linhas de código para alcançar uma coisa específica. Acabamos na situação em que a implementação do sistema não corresponde diretamente à intenção por trás dele. É quando a distinção entre a intenção e a implementação se torna crucial no contexto dos testes.
+
+O propósito dos testes
+O verdadeiro propósito de um teste está intimamente conectado à intenção por trás de cada caso de teste, e pode ser assim resumido:
+
+Você escreve testes para validar a intenção por trás do sistema.
+
+É apenas quando um teste valida a intenção que ele se torna útil.
+
+Eu vi projetos com centenas, às vezes milhares de testes automatizados que não contribuíam para nada. Eles frequentemente quebravam em pull requests. Eram difíceis de ler e dolorosos de navegar. Eles poderiam ter sido removidos amanhã, e ninguém notaria. Com o tempo, percebi o que os tornava dessa maneira.
+
+Eles não tinham nada a ver com a intenção do código que estavam tentando testar. Em vez de validar o que o código fazia (a intenção), eles se concentravam em como ele fazia (a implementação).
+
+"Não teste detalhes de implementação" é um conselho comum que você ouve em testes automatizados. Ouvir não significa entender, e entender não significa aplicar. Gastamos tanto tempo escrevendo código que muitas vezes nos tornamos cegos para a linha entre a intenção e a implementação. No final, também pretendemos cada escolha programática que fazemos, então por que não testar isso?
+
+Você só pode desbloquear o valor dos testes automatizados uma vez que começar a tratar os detalhes da implementação como um meio para um fim, e focar na maior intenção em questão. Seus usuários não sabem como os recursos do seu aplicativo funcionam, e nem seus testes devem saber. O que os usuários se importam, é que quaisquer promessas que seu aplicativo faça, quaisquer intenções que permita que eles alcancem, ele faz sem falhas.
+
+Mudar para esse modelo mental também faz maravilhas sempre que você não tem certeza do que testar. De repente, você pode abordar qualquer sistema em qualquer escala. Em caso de dúvida, teste a intenção. Sempre teste a **intenção**.
+
+É para isso que servem os testes automatizados.
